@@ -16,11 +16,17 @@ sw1 = PWM(Pin(3))
 sw2 = PWM(Pin(4))
 sw3 = PWM(Pin(5))
 
-pwm.freq(2500)
+pwm = PWM(Pin(21))
+pwm.freq(1500)
 
 i2c = I2C(1, scl=Pin(15), sda=Pin(14), freq=400000)
 adc = ads1115.ADS1115(i2c, 72, 0)
+
+
 while (1):
+    
+    
+    
     value = adc.raw_to_v(adc.read(7,1))
     reading = value
     
