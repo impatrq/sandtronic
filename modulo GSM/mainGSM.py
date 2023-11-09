@@ -1,25 +1,22 @@
-from machine import UART, Pin
-import time
-from sim800l import SIM800L
+import machine
+import urequests
 
-sim800l = SIM800L()
-sim800l.setup()
+# Configurar UART para comunicarse con el módulo SIM800L
+uart = machine.UART(0, baudrate=9600)  # Puedes necesitar ajustar el número de puerto y la velocidad.
+uart.init(tx=12, rx=13)  # Ajusta los pines TX y RX según tu configuración.
 
-mensaje = "hola"
+# Comando AT para verificar la comunicación
+uart.write("AT\r\n")
+response = uart.read(100)
+print(response)
+# Comando AT para configurar el número de destino
+uart.write('AT+CMGS="+5491128857582"\r\n')
+response = uart.read(100)
 
-sim800l.send_sms('25475491128857582', mensaje)
+# Comando AT para escribir el mensaje
+uart.write("Holaa\r\n")
+response = uart.read(100)
 
-#gsm = UART(0, baudrate=9600, rx=Pin(13), tx=Pin(12))
-#
-##uart1.read()
-#gsm.write("AT+CMGF=1\r") # set to text mode
-#time.sleep(1)
-#
-#gsm.write('AT+CMGS="+5491128857582"'+'\r\n')
-#rcv = gsm.read()
-#print(rcv)
-#time.sleep(1)
-#
-#gsm.write('HOLA'+'\r\n')
-#rcv = gsm.read()
-#print(rcv)
+# Enviar Ctrl+Z para finalizar el mensaje
+uart.write(chr(26))
+response = uart.read(100)
