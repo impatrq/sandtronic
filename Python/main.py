@@ -9,7 +9,7 @@ def map(var, low_min, low_max, high_min, high_max):
     result = high_range * per
     return int(result)
 
-from machine import Pin,I2C, PWM
+from machine import Pin, I2C, PWM
 pwm = PWM(Pin(22))
 pwm.freq(2800)
 i2c = I2C(1, scl=Pin(15), sda=Pin(14), freq=400000)

@@ -2,11 +2,11 @@
 import time
 import machine
 
-servo_pin = 20
+servo_pin = 13
 pwm = machine.PWM(machine.Pin(servo_pin))
 pwm.freq(50)
 
-sensor_pin = machine.Pin(16, machine.Pin.IN)
+sensor_pin = machine.Pin(26, machine.Pin.IN)
 pulse_count = 0
 speed = 0.0
 diametro= 0.55
@@ -39,7 +39,7 @@ sensor_pin.irq(trigger=machine.Pin.IRQ_RISING,handler=on_pulse)
 t= machine.Timer()
 t.init(period=100, mode=machine.timer.PERIODIC, callback=calculate_speed)
 
-while true:
+while True:
     
     print (pulse_count)
     print (speed)
