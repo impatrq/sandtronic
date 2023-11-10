@@ -3,10 +3,10 @@ import time
 import machine
 
 servo_pin = 13
-pwm = machine.PWM(machine.Pin(servo_pin))
-pwm.freq(50)
+pwm2 = machine.PWM(machine.Pin(servo_pin))
+pwm2.freq(50)
 
-sensor_pin = machine.Pin(26, machine.Pin.IN)
+sensor_pin = machine.Pin(20, machine.Pin.IN)
 pulse_count = 0
 speed = 0.0
 diametro= 0.55
@@ -24,7 +24,7 @@ m = (1333-8000) / 80
 
 def calculate_speed(t):
     global pulse_count, speed, duty
-    speed = pulse_count * 10 / (relacion * cant_imanes) * circuferencia * 3.6
+    speed = pulse_count * 10 / (relacion * cant_imanes) * circunferencia * 3.6
     duty = int (m * speed + servo_duty_0)
     pulse_count = 0
     print("velocidad: {:.1f} km?h" .format(speed))
@@ -43,7 +43,7 @@ while True:
     
     print (pulse_count)
     print (speed)
-    pwm.duty_u16(duty)
+    pwm2.duty_u16(duty)
 
 
 
