@@ -18,4 +18,3 @@ sim800l.setup()
 print(sim800l.network_name())
 # sim800l.test()
 sim800l.send_sms(destno, msg)
-
