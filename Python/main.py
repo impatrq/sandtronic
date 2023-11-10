@@ -6,11 +6,11 @@ import _thread
 from machine import Pin, I2C, PWM
 
 
-### parametros dedicados del pwm estator 
+### parametros dedicados del pwm rotor 
 
-class stator(): 
+class rotor(): 
     def __init__(self):               
-        self.pwm = PWM(Pin(22)) # pwm del estator
+        self.pwm = PWM(Pin(22)) # pwm del rotor
         self.pwm.freq(2800)
 
         self.i2c = I2C(1, scl=Pin(15), sda=Pin(14), freq=400000) # direc i2c del adc externo
@@ -65,29 +65,29 @@ class velocimeter():
 
 ###
 
-def pwm_stator():
+def pwm_rotor():
 
-    value = stator.adc.raw_to_v(stator.adc.read(7,1))
+    value = rotor.adc.raw_to_v(rotor.adc.read(7,1))
     reading = value
-    res = stator.map(reading,0,3.3,0,84000)
+    res = rotor.map(reading,0,3.3,0,84000)
     if value < 1:
         res = 19500
     print("ADC: ", value)
     print("PWM: ", res )
-    stator.pwm.duty_u16(res - 19500)
+    rotor.pwm.duty_u16(res - 19500)
     utime.sleep(0.05)
 
 def velocimetro():
     print(velocimeter.calculate_speed())
-    print (velocimeter.on_pulse())
+    print(velocimeter.on_pulse())
     velocimeter.pwm.duty_u16(velocimeter.duty)
 
 def main():
-    stator()
+    rotor()
     velocimeter()
     while True: 
         try: # safeguard por si se llena la queue de threads, evito crasheos
-            _thread.start_new_thread(pwm_stator)
+            _thread.start_new_thread(pwm_rotor)
         except:
             pass
         try:
