@@ -10,8 +10,8 @@ from machine import Pin, I2C, PWM
 
 class stator(): 
     def __init__(self):               
-        self.pwm1 = PWM(Pin(22)) # pwm del estator
-        self.pwm1.freq(2800)
+        self.pwm = PWM(Pin(22)) # pwm del estator
+        self.pwm.freq(2800)
 
         self.i2c = I2C(1, scl=Pin(15), sda=Pin(14), freq=400000) # direc i2c del adc externo
         self.adc = ads1115.ADS1115(self.i2c, 72, 0) # adc externo
@@ -31,8 +31,8 @@ class velocimeter():
         self.servo_pin = 13 # Pin del servo del velocimetro
         self.sensor_pin = 20 # Pin del sensor 
 
-        self.pwm2 = machine.PWM(machine.Pin(self.servo_pin))
-        self.pwm2.freq(50)
+        self.pwm = machine.PWM(machine.Pin(self.servo_pin))
+        self.pwm.freq(50)
 
         self.sensor = machine.Pin(self.sensor_pin, machine.Pin.IN) # sensor de pulsos de motor
 
@@ -67,24 +67,24 @@ class velocimeter():
 
 def pwm_stator():
 
-    value = adc.raw_to_v(adc.read(7,1))
+    value = stator.adc.raw_to_v(stator.adc.read(7,1))
     reading = value
-    res = map(reading,0,3.3,0,84000)
+    res = stator.map(reading,0,3.3,0,84000)
     if value < 1:
         res = 19500
     print("ADC: ", value)
     print("PWM: ", res )
-    pwm1.duty_u16(res - 19500)
+    stator.pwm.duty_u16(res - 19500)
     utime.sleep(0.05)
 
 def velocimetro():
-    print(calculate_speed())
-    print (on_pulse())
-    pwm2.duty_u16(duty)
+    print(velocimeter.calculate_speed())
+    print (velocimeter.on_pulse())
+    velocimeter.pwm.duty_u16(velocimeter.duty)
 
 def main():
-    stator_setup()
-    velocimeter_setup()
+    stator()
+    velocimeter()
     while True: 
         try: # safeguard por si se llena la queue de threads, evito crasheos
             _thread.start_new_thread(pwm_stator)
