@@ -1,22 +1,21 @@
-import machine
-import urequests
+from machine import UART, Pin
+from sim800l import SIM800L
+#import urequests
+
+uartno = 0
+baudrate = 9600
+
+destno = "+5491154637770"
+msg = "HOLA"
+
+sim800l = SIM800L(uartno)
 
 # Configurar UART para comunicarse con el módulo SIM800L
-uart = machine.UART(0, baudrate=9600)  # Puedes necesitar ajustar el número de puerto y la velocidad.
-uart.init(tx=12, rx=13)  # Ajusta los pines TX y RX según tu configuración.
+#uart = machine.UART(0, baudrate=9600)  # Puedes necesitar ajustar el número de puerto y la velocidad.
+#uart.init(tx=Pin(12), rx=Pin(13))  # Ajusta los pines TX y RX según tu configuración.
 
-# Comando AT para verificar la comunicación
-uart.write("AT\r\n")
-response = uart.read(100)
-print(response)
-# Comando AT para configurar el número de destino
-uart.write('AT+CMGS="+5491128857582"\r\n')
-response = uart.read(100)
+sim800l.setup()
+print(sim800l.network_name())
+# sim800l.test()
+sim800l.send_sms(destno, msg)
 
-# Comando AT para escribir el mensaje
-uart.write("Holaa\r\n")
-response = uart.read(100)
-
-# Enviar Ctrl+Z para finalizar el mensaje
-uart.write(chr(26))
-response = uart.read(100)
