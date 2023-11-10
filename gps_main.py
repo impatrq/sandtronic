@@ -4,9 +4,6 @@ import time
 import _thread
 from micropyGPS import MicropyGPS
 
-destno = "Número en formato +xxxxxxxxxxx"
-msg = "Mensaje, sobreescrito por el loop del programa"
-
 class sim():
         
     def __init__(self):
@@ -63,12 +60,13 @@ class sim():
             print("SMS enviado con éxito.")
 
 
-class gps():
+class gps_custom():
 
     def __init__(self): # Inicializar modulo GPS
         self.gps_module = UART(1, baudrate=9600, tx=Pin(8), rx=Pin(9))
         time_zone = -3
-        self.gps = MicropyGPS(time_zone)
+        return time_zone
+        
     
     def convert_coordinates(self, sections):
         if sections[0] == 0:  # sections[0] contains the degrees
@@ -85,16 +83,23 @@ class gps():
     
         data = '{0:.6f}'.format(data)  # 6 decimal places
         return str(data)
+    
+destno = "Número en formato +xxxxxxxxxxx"
+msg = "Mensaje, sobreescrito por el loop del programa"
  
+time_zone = gps_custom()
+gps = MicropyGPS(time_zone)
+sim()
+
 while True:
-    length = gps.gps_module.any()
+    length = gps_custom.gps_module.any()
     if length > 0:
-        data = gps.gps_module.read(length)
+        data = gps_custom.gps_module.read(length)
         for byte in data:
-            message = gps.update(chr(byte))
+            message = gps_custom.update(chr(byte))
  
-    latitude = gps.convert_coordinates(gps.latitude)
-    longitude = gps.convert_coordinates(gps.longitude)
+    latitude = gps_custom.convert_coordinates(gps.latitude)
+    longitude = gps_custom.convert_coordinates(gps.longitude)
  
     if latitude is None or longitude is None:
          print("Data no disponible")
