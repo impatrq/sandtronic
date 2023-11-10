@@ -35,7 +35,7 @@ def on_pulse(pin):
     pulse_count += 1
     
     
-senor_pin.irq(trigger=machine.Pin.IRQ_RISING,handler=on_pulse)
+sensor_pin.irq(trigger=machine.Pin.IRQ_RISING,handler=on_pulse)
 t= machine.Timer()
 t.init(period=100, mode=machine.timer.PERIODIC, callback=calculate_speed)
 
