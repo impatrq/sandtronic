@@ -5,15 +5,16 @@ import ads1115
 import _thread
 from machine import Pin, I2C, PWM
 
-
 ### parametros dedicados del pwm rotor 
+
+### multithread para separar el velocímetro del código del acelerador
 
 class rotor(): 
     def __init__(self):               
         self.pwm = PWM(Pin(22)) # pwm del rotor
         self.pwm.freq(2800)
 
-        self.i2c = I2C(1, scl=Pin(15), sda=Pin(14), freq=400000) # direc i2c del adc externo
+        self.i2c = I2C(1, scl=Pin(15), sda=Pin(14), freq=400000) # direc i2c del adc externo - sensa señal del acelerador 
         self.adc = ads1115.ADS1115(self.i2c, 72, 0) # adc externo
 
     def map(self, var, low_min, low_max, high_min, high_max):
@@ -78,20 +79,22 @@ def pwm_rotor():
     utime.sleep(0.05)
 
 def velocimetro():
-    print(velocimeter.calculate_speed())
-    print(velocimeter.on_pulse())
-    velocimeter.pwm.duty_u16(velocimeter.duty)
+    velocimeter.sensor_pin.irq(trigger=machine.Pin.IRQ_RISING,handler=velocimeter.on_pulse)
+    t= machine.Timer()
+    t.init(period=100, mode=machine.timer.PERIODIC, callback=velocimeter.calculate_speed)
+
+    while True:       
+        print(velocimeter.calculate_speed())
+        print(velocimeter.on_pulse())
+        velocimeter.pwm.duty_u16(velocimeter.duty)
 
 def main():
     rotor()
     velocimeter()
+    velocimetro()
     while True: 
         try: # safeguard por si se llena la queue de threads, evito crasheos
             _thread.start_new_thread(pwm_rotor)
-        except:
-            pass
-        try:
-            _thread.start_new_thread(velocimetro)
         except:
             pass
 
