@@ -9,6 +9,8 @@ from machine import Pin, I2C, PWM
 
 ### multithread para separar el velocímetro del código del acelerador
 
+pin_encendido = Pin(7, Pin.IN, Pin.PULL_DOWN)
+
 class rotor(): 
     def __init__(self):               
         self.pwm = PWM(Pin(22)) # pwm del rotor
@@ -32,10 +34,10 @@ class velocimeter():
         self.servo_pin = 13 # Pin del servo del velocimetro
         self.sensor_pin = 20 # Pin del sensor 
 
-        self.pwm = machine.PWM(machine.Pin(self.servo_pin))
+        self.pwm = PWM(Pin(self.servo_pin))
         self.pwm.freq(50)
 
-        self.sensor = machine.Pin(self.sensor_pin, machine.Pin.IN) # sensor de pulsos de motor
+        self.sensor = Pin(self.sensor_pin, Pin.IN) # sensor de pulsos de motor
 
         self.pulse_count = 0
         self.speed = 0.0
@@ -67,16 +69,16 @@ class velocimeter():
 ###
 
 def pwm_rotor():
-
-    value = rotor.adc.raw_to_v(rotor.adc.read(7,1))
-    reading = value
-    res = rotor.map(reading,0,3.3,0,84000)
-    if value < 1:
-        res = 19500
-    print("ADC: ", value)
-    print("PWM: ", res )
-    rotor.pwm.duty_u16(res - 19500)
-    utime.sleep(0.05)
+    while True:
+        value = rotor.adc.raw_to_v(rotor.adc.read(7,1))
+        reading = value
+        res = rotor.map(reading,0,3.3,0,84000)
+        if value < 1:
+            res = 19500
+        print("ADC: ", value)
+        print("PWM: ", res )
+        rotor.pwm.duty_u16(res - 19500)
+        utime.sleep(0.05)
 
 def velocimetro():
     velocimeter.sensor_pin.irq(trigger=machine.Pin.IRQ_RISING,handler=velocimeter.on_pulse)
@@ -91,11 +93,11 @@ def velocimetro():
 def main():
     rotor()
     velocimeter()
+    _thread.start_new_thread(pwm_rotor)
     velocimetro()
-    while True: 
-        try: # safeguard por si se llena la queue de threads, evito crasheos
-            _thread.start_new_thread(pwm_rotor)
-        except:
-            pass
+    # safeguard por si se llena la queue de threads, evito crasheos
 
-main()
+while True:
+    if pin_encendido == 1:
+        print("Encendido")
+        main()
