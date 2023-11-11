@@ -9,7 +9,10 @@ from machine import Pin, I2C, PWM
 
 ### multithread para separar el velocímetro del código del acelerador
 
+#print("HOLA")
 pin_encendido = Pin(7, Pin.IN, Pin.PULL_DOWN)
+#pin_led = Pin(12, Pin.OUT)
+boton_presionado = None
 
 class rotor(): 
     def __init__(self):               
@@ -91,13 +94,34 @@ def velocimetro():
         velocimeter.pwm.duty_u16(velocimeter.duty)
 
 def main():
-    rotor()
-    velocimeter()
-    _thread.start_new_thread(pwm_rotor)
+    print("Start main")
+    global rotor
+    global velocimeter
+    rotor = rotor()
+    velocimeter = velocimeter()
+    _thread.start_new_thread(pwm_rotor, ())
     velocimetro()
     # safeguard por si se llena la queue de threads, evito crasheos
 
+def boton_encendido():
+    global pin_encendido
+    #global pin_led
+    global boton_presionado
+    if pin_encendido.value() == 1:
+        if boton_presionado is None:
+            boton_presionado = time.ticks_ms()
+        else:
+            if time.ticks_diff(time.ticks_ms(), boton_presionado) > 2000:
+                print("Encendido.")
+                #pin_led.value(1)
+                main()        
+    else:
+        print("El botón está en posición de apagado.")
+        return
+
 while True:
-    if pin_encendido == 1:
-        print("Encendido")
-        main()
+    #print("Test")
+    if pin_encendido.value() == 1:
+        print("Encendiendo . . .")
+        boton_encendido()
+
