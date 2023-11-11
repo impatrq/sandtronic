@@ -11,6 +11,8 @@ from machine import Pin, I2C, PWM
 
 #print("HOLA")
 pin_encendido = Pin(7, Pin.IN, Pin.PULL_DOWN)
+pin_a1_reversa = Pin(9, Pin.IN, Pin.PULL_DOWN)
+pin_reversa = Pin(21, Pin.OUT)
 #pin_led = Pin(12, Pin.OUT)
 boton_presionado = None
 
@@ -73,6 +75,10 @@ class velocimeter():
 
 def pwm_rotor():
     while True:
+        if pin_a1_reversa.value() == 1:
+            pin_reversa.value(1)
+        else:
+            pin_reversa.value(0)
         value = rotor.adc.raw_to_v(rotor.adc.read(7,1))
         reading = value
         res = rotor.map(reading,0,3.3,0,84000)
