@@ -35,7 +35,7 @@ class sim():
             return
 
         # setea número
-        self.uart.write(f'AT+CMGS="{phone_number}"\r\n')
+        self.uart.write('AT+CMGS="{}"\n'.format(phone_number),99,5000,message+'\x1A')
         time.sleep(1)
         response = self.uart.read().decode('utf-8')
         print(response)
