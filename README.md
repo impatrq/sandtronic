@@ -2,7 +2,7 @@
 
 # SandTronic
 <div align="center">
-<img src="imagenes/sandtronic_nashei.png" width="50%">
+<img src="imagenes/sandtronic_nashei.png" width="60%">
 
 </div>
 
@@ -36,3 +36,5 @@ Es un karting eléctrico especialmente adaptado para su uso en playas, con el pr
 ## ¿Dónde nos pueden encontrar?
 ### 📷Instagram: [@SandTronic_gr](https://instagram.com/sandtronic_gr?igshid=NzZlODBkYWE4Ng==)
 ### LinkTree: [SandTronic](https://linktr.ee/sandtronic_gr)
+
+<img src="imagenes/qr.png" width="50%">
