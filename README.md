@@ -1,2 +1,2 @@
 # sandtronic
-## ![alt text](C:\Users\carla\Downloads\sandtronic_nashei)
+<img src="C:\Users\carla\Documents\GitHub\SandTronic\imagenes\sandtronic_nashei.png">
