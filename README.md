@@ -15,4 +15,24 @@ Es un karting eléctrico especialmente adaptado para su uso en playas, con el pr
 
 <img src= "imagenes/foto_grupal.jpeg" width="70%">
 
-Seguinos en nuestro perfil oficial de Instagram : https://instagram.com/sandtronic_gr?igshid=NzZlODBkYWE4Ng==
+# Integrantes
+
+* ###  *Alvarez, Mauricio*
+    *    📧 Email: [maurialvarez2004@gmail.com](mailto:maurialvarez2004@gmail.com)         
+
+* ### *Enricci Louzan, Carla*
+    *    📧 Email: [carlamicaela2004@gmail.com](mailto:carlamicaela2004@gmail.com)
+
+* ###  *Morellato, Nicolas*
+    *    📧 Email: [morellatonico@gmail.com](mailto:morellatonico@gmail.com)
+
+* ### *Vega Ezequiel*
+    *    📧 Email: [ezevega44@gmail.com](mailto:ezevega44@gmail.com)
+
+* ### *Zanichelli, Mateo*
+    *  📧 Email: [mateo.zanichelli@hotmail.com](mailto:mateo.zanichelli@hotmail.com)
+
+
+## ¿Dónde nos pueden encontrar?
+### 📷Instagram: [@SandTronic_gr](https://instagram.com/sandtronic_gr?igshid=NzZlODBkYWE4Ng==)
+### LinkTree: [SandTronic](https://linktr.ee/sandtronic_gr)
