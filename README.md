@@ -13,7 +13,7 @@ Es un karting eléctrico especialmente adaptado para su uso en playas, con el pr
 
 #### Somos un grupo de estudiantes de séptimo año de la IMPA, orientación de Aviónica.
 
-<img src= "imagenes/foto_grupal.jpeg" width="70%">
+<img src= "imagenes/impa.png" width="70%">
 
 # Integrantes
 
@@ -32,9 +32,8 @@ Es un karting eléctrico especialmente adaptado para su uso en playas, con el pr
 * ### *Zanichelli, Mateo*
     *  📧 Email: [mateo.zanichelli@hotmail.com](mailto:mateo.zanichelli@hotmail.com)
 
+<img src= "imagenes/foto_grupal.jpeg" width="70%">
 
 ## ¿Dónde nos pueden encontrar?
 ### 📷Instagram: [@SandTronic_gr](https://instagram.com/sandtronic_gr?igshid=NzZlODBkYWE4Ng==)
 ### LinkTree: [SandTronic](https://linktr.ee/sandtronic_gr)
-
-<img src="imagenes/qr.png" width="50%">
