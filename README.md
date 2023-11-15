@@ -1,2 +1,2 @@
 # sandtronic
-<img src="C:\Users\carla\Documents\GitHub\SandTronic\imagenes\sandtronic_nashei.png">
+<img src="imagenes/sandtronic_nashei.png" width="50%">
