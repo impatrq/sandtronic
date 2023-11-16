@@ -7,11 +7,11 @@
 </div>
 
 # ¿Qué es SandTronic?
-Es un karting eléctrico especialmente adaptado para su uso en playas, con el propósito de proporcionar un medio de transporte eficiente y seguro para situaciones de emergencia en las que los guardavidas necesiten rescatar a personas en peligro en el agua o en áreas remotas de la playa.
+Es un karting eléctrico especialmente adaptado para su uso en playas, con el propósito de brindar un medio de transporte eficiente y seguro para situaciones de emergencia en las que los guardavidas necesiten rescatar a personas en peligro en el agua o en áreas remotas de la playa.
 
 ## ¿Quienes somos?
 
-#### Somos un grupo de estudiantes de aviónica la E.E.S.T. "Taller Regional Quilmes", conocido como IMPA.
+#### Somos un grupo de estudiantes de aviónica de la E.E.S.T. "Taller Regional Quilmes", conocida como IMPA.
 
 <img src= "imagenes/impa.png" width="70%">
 
