@@ -27,3 +27,11 @@ class Sandtronic:
     def frenar(self, delta):
         self.acelerar(-delta)
         
+        sand = Sandtronic(30)
+print(sand.mostrarVelocidad())
+sand.acelerar(5)
+print(sand.mostrarVelocidad())
+sand.frenar(3)
+print(sand.mostrarVelocidad())
+
+        
