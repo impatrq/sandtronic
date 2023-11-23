@@ -24,3 +24,13 @@ class Velocimetro(object):
         #aca habia un global pwm
        
         self.servo_pin = 20
+        
+        def iniciar(self):
+        self.pwm = machine.PWM(machine.Pin(self.servo_pin))
+        self.pwm.freq(50)
+        # GPIO de entrada para el sensor de efecto hall
+        self.sensor_pin = machine.Pin(16, machine.Pin.IN)
+        self.sensor_pin.irq(trigger=machine.Pin.IRQ_RISING, handler=self.on_pulse)
+        # Timer para ventana de tiempo velocimetro
+        self.t = machine.Timer()
+        self.t.init(period=100, mode=machine.Timer.PERIODIC, callback=self.calculate_speed)
