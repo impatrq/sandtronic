@@ -40,4 +40,20 @@ class Velocimetro(object):
         self.duty = int(self.m * self.speed + self.servo_duty_0)
         self.pulse_count = 0
         print("Velocidad: {:.1f} km/h".format(speed))
+        
+          
+    def on_pulse(self, t):
+        self.pulse_count += 1
+        
+    
+velocimetro = Velocimetro()
+velocimetro.iniciar()
+
+try:
+    while True:
+        pass
+
+except KeyboardInterrupt:
+    print("Fin del programa")
+
     
