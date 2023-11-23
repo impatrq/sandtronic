@@ -34,3 +34,10 @@ class Velocimetro(object):
         # Timer para ventana de tiempo velocimetro
         self.t = machine.Timer()
         self.t.init(period=100, mode=machine.Timer.PERIODIC, callback=self.calculate_speed)
+        
+        def calculate_speed(self, t):
+        speed = self.pulse_count * 10 / (self.relacion * self.cant_imanes) * self.circunferencia * 3.6 # velocidad en km/h
+        self.duty = int(self.m * self.speed + self.servo_duty_0)
+        self.pulse_count = 0
+        print("Velocidad: {:.1f} km/h".format(speed))
+    
