@@ -14,3 +14,16 @@ class Sandtronic:
         self.velocidad_max = velocidad
         self.velocimetro = classvelocimetro.Velocimetro()
         
+          def mostrarVelocidad(self):
+        self.velocimetro.calculate_speed()
+    
+    def encenderMotor(self):
+        self.velocidad = 0
+        self.encendido = True
+        
+    def acelerar(self, delta): # Delta seria la variacion de velocidad
+        self.velocidad += delta # self.velocidad = self.velocidad + delta
+        
+    def frenar(self, delta):
+        self.acelerar(-delta)
+        
