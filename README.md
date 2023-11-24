@@ -39,3 +39,6 @@ Es un karting eléctrico especialmente adaptado para su uso en playas, con el pr
 ### 📷Instagram: [@SandTronic_gr](https://instagram.com/sandtronic_gr?igshid=NzZlODBkYWE4Ng==)
 ### LinkTree: [SandTronic](https://linktr.ee/sandtronic_gr)
 <img src="imagenes/qr_sandtronic.png" width="40%">
+
+### [PRESENTACION](https://www.canva.com/design/DAF0_eJnGpE/rp8mau87t5ocqL5--kpcKw/edit)
+
