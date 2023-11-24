@@ -1,1 +1,0 @@
-[Dar click para ver presentación](https://www.canva.com/design/DAF0_eJnGpE/yYKZw175jgtaCtqbcVzkhw/view?utm_content=DAF0_eJnGpE&utm_campaign=designshare&utm_medium=link&utm_source=editor)
