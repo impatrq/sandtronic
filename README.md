@@ -23,6 +23,7 @@ Es un karting eléctrico especialmente adaptado para su uso en playas, con el pr
 
 * ### *Enricci Louzan, Carla*
     *    📧 Email: [carlamicaela2004@gmail.com](mailto:carlamicaela2004@gmail.com)
+    *    ![LinkedIn](https://i.stack.imgur.com/gVE0j.png) LinkedIn: [Carla Enricci](https://www.linkedin.com/in/carla-micaela-enricci-louzan/)
 
 * ###  *Morellato, Nicolas*
     *    📧 Email: [morellatonico@gmail.com](mailto:morellatonico@gmail.com)
@@ -32,10 +33,14 @@ Es un karting eléctrico especialmente adaptado para su uso en playas, con el pr
 
 * ### *Zanichelli, Mateo*
     *  📧 Email: [mateo.zanichelli@hotmail.com](mailto:mateo.zanichelli@hotmail.com)
+    *    ![LinkedIn](https://i.stack.imgur.com/gVE0j.png) LinkedIn: [Mateo Zanichelli](https://www.linkedin.com/in/mateo-zanichelli-b1b2b827b/)
 
+<div align="center">
 <img src= "imagenes/foto_grupal.jpeg" width="70%">
+</div>
 
 ## ¿Dónde nos pueden encontrar?
 ### 📷Instagram: [@SandTronic_gr](https://instagram.com/sandtronic_gr?igshid=NzZlODBkYWE4Ng==)
 ### LinkTree: [SandTronic](https://linktr.ee/sandtronic_gr)
 <img src="imagenes/qr_sandtronic.png" width="40%">
+
