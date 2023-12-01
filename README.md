@@ -12,7 +12,7 @@ Es un karting eléctrico especialmente adaptado para su uso en playas, con el pr
 
 ## ¿Quienes somos?
 
-#### Somos un grupo de estudiantes de aviónica de la E.E.S.T. "Taller Regional Quilmes", conocida como IMPA.
+#### Somos un grupo de estudiantes de aviónica de la E.E.S.T. N°7 "Taller Regional Quilmes", conocida como IMPA.
 
 <img src= "imagenes/impa.png" width="70%">
 
